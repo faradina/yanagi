@@ -4,7 +4,7 @@
 	$sql=mysql_query($q);
 	$hasil=mysql_fetch_array($sql);
 ?>
-<h3>Buat Info Baru</h3>
+<h3>Edit Tentang</h3>
 	
 	<FORM ACTION="tentang/add.php" METHOD="POST" NAME="input" ENCTYPE="multipart/form-data">
 		<table width="95%">

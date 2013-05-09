@@ -12,7 +12,7 @@ function validateForm()
 		  }
 	}
 </script>
-<h3>Buat Info Baru</h3>
+<h3>Tambah Diary</h3>
 	
 	<FORM ACTION="./rekomendasi/add.php" METHOD="POST" NAME="input" ENCTYPE="multipart/form-data" onsubmit="return validateForm();" >
 		<table width="95%">

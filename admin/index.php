@@ -38,7 +38,7 @@
 	<ul>
 		<li><a href="?v=index">Home</a></li>
 		<li><a href="?v=diary">Diary</a></li>
-		<li><a href="?v=tentang">Tentang</a></li>
+		<li><a href="./?v=addtentang">Tentang</a></li>
 		<li><a href="?v=rekomendasi">Rekomendasi</a></li>
 	</ul>
 	</div>
@@ -106,12 +106,23 @@ elseif ($v=='addrekomendasi'){
 elseif ($v=='diary'){
 	include "./diary/kolom.php";
 }
-elseif ($v=='tentang'){
-	include "./tentang/kolom.php";
+elseif ($v=='editdiary'){
+	include "./diary/edit.php";
+}
+elseif ($v=='deletediary'){
+	include "./diary/delete.php";
 }
 elseif ($v=='rekomendasi'){
 	include "./rekomendasi/kolom.php";
-}?>
+}
+elseif ($v=='editrekomendasi'){
+	include "./rekomendasi/edit.php";
+}
+elseif ($v=='deleterekomendasi'){
+	include "./rekomendasi/delete.php";
+}
+?>
+
 	</div>
 <div class="clear"></div>
 <div id="footer">
