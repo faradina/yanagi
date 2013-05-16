@@ -8,11 +8,12 @@ $isi_berita = addslashes (strip_tags ($_POST['isi']));
 $query = "UPDATE tentang SET tentang='$isi_berita' WHERE id=0";
 $sql = mysql_query ($query);
 if ($sql) {?>
-<meta http-equiv="refresh" content="1;url=../?v=tentang">
+<script> alert("Perubahan berhasil ditambahkan :) "); </script>
+<meta http-equiv="refresh" content="1;url=../?v=addtentang">
 <?php
 } else {?>
-<script> alert("Info tidak berhasil ditambahkan :( "); </script>
-<meta http-equiv="refresh" content="1;url=../?v=tentang">
+<script> alert("Perubahan tidak berhasil disimpan :( "); </script>
+<meta http-equiv="refresh" content="1;url=../?v=addtentang">
 <?php
 }
 ?>

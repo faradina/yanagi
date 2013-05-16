@@ -34,7 +34,6 @@ function validateForm()
 			<tr><td><b>Diary</b></td><td><textarea name="isi" rows="15" cols="80" style="width: 80%"></textarea></td></tr>
 			<tr><td></td><td>
 			<input type="submit" class="button" value="Submit">
-			<input type="reset" class="button" value="Reset">
 			</td></tr>
 		</table>
 	</form>

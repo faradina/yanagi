@@ -1,3 +1,10 @@
+<?php
+include "../conn.php";
+session_start();
+if (!isset($_SESSION['username'],$_SESSION['ID_ADMIN'])){
+header("Location:./login.php");
+}
+?>
 <html>
 <head>
 <title>Admin Panel Diary Nekoyanagi</title>
@@ -27,7 +34,7 @@
 	<div class="inHeader">
 		<div class="mosAdmin">
 		Hallo, Administrator<br>
-		<a href="../">Lihat website</a> | <a href="login.html">Keluar</a>
+		<a href="../">Lihat website</a> | <a href="logout.php">Keluar</a>
 		</div>
 	<div class="clear"></div>
 	</div>
@@ -66,9 +73,22 @@ if ($v=='' || $v=='index'){?>
 		<div id="smallRight"><h3>Informasi web anda</h3>
 		<table style="border: none;font-size: 12px;color: #5b5b5b;width: 100%;margin: 10px 0 10px 0;">
 			<tr></tr>
-			<tr><td style="border: none;padding: 4px;">Jumlah catatan harian</td><td style="border: none;padding: 4px;"><b>12</b></td></tr>
-			<tr><td style="border: none;padding: 4px;">Jumlah kategori</td><td style="border: none;padding: 4px;"><b>12</b></td></tr>
-			<tr><td style="border: none;padding: 4px;">Jumlah rekomendasi</td><td style="border: none;padding: 4px;"><b>12</b></td></tr>
+			<?php
+				$q1="SELECT COUNT(id_diary) FROM diary";
+				$sql1=mysql_query($q1);
+				$hasil1=mysql_result($sql1,0);
+				
+				$q2=" SELECT COUNT(id) FROM kategori";
+				$sql2=mysql_query($q2);
+				$hasil2=mysql_result($sql2,0);
+				
+				$q3=" SELECT COUNT(id) FROM rekomendasi";
+				$sql3=mysql_query($q3);
+				$hasil3=mysql_result($sql3,0);
+			?>
+			<tr><td style="border: none;padding: 4px;">Jumlah catatan harian</td><td style="border: none;padding: 4px;"><b><?php echo $hasil1;?></b></td></tr>
+			<tr><td style="border: none;padding: 4px;">Jumlah kategori</td><td style="border: none;padding: 4px;"><b><?php echo $hasil2;?></b></td></tr>
+			<tr><td style="border: none;padding: 4px;">Jumlah rekomendasi</td><td style="border: none;padding: 4px;"><b><?php echo $hasil3;?></b></td></tr>
 			<tr></tr>
 		</table>
 		</div>
@@ -76,20 +96,26 @@ if ($v=='' || $v=='index'){?>
 		<div class="clear"></div>
 		<div id="smallRight"><h3>Catatan Terakhir</h3>
 		<table style="border: none;font-size: 12px;color: #5b5b5b;width: 100%;margin: 10px 0 10px 0;">
-			<tr><td style="border: none;padding: 4px;">Pengunjung online</td><td style="border: none;padding: 4px;"><b>12</b></td></tr>
-			<tr><td style="border: none;padding: 4px;">Pengunjung hari ini</td><td style="border: none;padding: 4px;"><b>12</b></td></tr>
-			<tr><td style="border: none;padding: 4px;">Total pengunjung</td><td style="border: none;padding: 4px;"><b>12</b></td></tr>
-			<tr><td style="border: none;padding: 4px;">Hit hari ini</td><td style="border: none;padding: 4px;"><b>12</b></td></tr>
-			<tr><td style="border: none;padding: 4px;">Total hit</td><td style="border: none;padding: 4px;"><b>12</b></td></tr>
+			<?php
+			$qdiary="SELECT id_diary,judul FROM diary ORDER BY id_diary LIMIT 5";
+			$sqldiary=mysql_query($qdiary);
+			while($hasild=mysql_fetch_array($sqldiary)){
+			$judul=$hasild['judul'];
+			?>
+			<tr><td style="border: none;padding: 4px;"><?php echo $judul;?></td></tr>
+			<?php } ?>
 		</table>
 		</div>
 		<div id="smallRight"><h3>Rekomendasi Terakhir</h3>
 		<table style="border: none;font-size: 12px;color: #5b5b5b;width: 100%;margin: 10px 0 10px 0;">
-			<tr><td style="border: none;padding: 4px;">Pengunjung online</td><td style="border: none;padding: 4px;"><b>12</b></td></tr>
-			<tr><td style="border: none;padding: 4px;">Pengunjung hari ini</td><td style="border: none;padding: 4px;"><b>12</b></td></tr>
-			<tr><td style="border: none;padding: 4px;">Total pengunjung</td><td style="border: none;padding: 4px;"><b>12</b></td></tr>
-			<tr><td style="border: none;padding: 4px;">Hit hari ini</td><td style="border: none;padding: 4px;"><b>12</b></td></tr>
-			<tr><td style="border: none;padding: 4px;">Total hit</td><td style="border: none;padding: 4px;"><b>12</b></td></tr>
+			<?php
+			$qdiary="SELECT id,judul FROM rekomendasi ORDER BY id LIMIT 5";
+			$sqldiary=mysql_query($qdiary);
+			while($hasild=mysql_fetch_array($sqldiary)){
+			$judul=$hasild['judul'];
+			?>
+			<tr><td style="border: none;padding: 4px;"><?php echo $judul;?></td></tr>
+			<?php } ?>
 		</table>
 		</div>
 	

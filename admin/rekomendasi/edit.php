@@ -20,7 +20,7 @@ function validateForm()
 		  }
 	}
 </script>
-<h3>Edit Diary</h3>
+<h3>Edit Rekomendasi</h3>
 	
 	<FORM ACTION="./rekomendasi/editproses.php" METHOD="POST" NAME="input" ENCTYPE="multipart/form-data" onsubmit="return validateForm();" >
 		<table width="95%">
@@ -29,7 +29,6 @@ function validateForm()
 			<tr><td><b>Rekomendasi</b></td><td><textarea name="isi" rows="15" cols="80" style="width: 80%"><?php echo $isi;?></textarea></td></tr>
 			<tr><td></td><td>
 			<input type="submit" class="button" value="Submit">
-			<input type="reset" class="button" value="Reset">
 			</td></tr>
 		</table>
 	</form>

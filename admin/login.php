@@ -10,23 +10,40 @@
 
 <link rel="shortcut icon" href="stylesheet/img/devil-icon.png"> <!--Pemanggilan gambar favicon-->
 <link rel="stylesheet" type="text/css" href="mos-css/mos-style.css"> <!--pemanggilan file css-->
+<script>
+function validate()
+	{
+		var x=document.forms["input"]["uname"].value;
+		var b=document.forms["input"]["pass"].value;
+		if (x==""||b=="" )
+		  {
+		  alert("Form harap diisi semua");
+		  return false;
+		  }
+	}
+</script>
 </head>
 
 <body>
 <div id="header">
 	<div class="inHeaderLogin"></div>
-</div>
-
+</div><?
+if (!empty($_GET['error'])) {
+    if ($_GET['error'] == 4) {
+        echo '<h4>Username dan Password tidak terdaftar!</h4>';
+    } 
+}?>
 <div id="loginForm">
 	<div class="headLoginForm">
 	Login Administrator
 	</div>
 	<div class="fieldLogin">
-	<form method="POST" action="">
+
+	<form method="POST" name="input" action="proses.php" OnSubmit="return validate();">
 	<label>Username</label><br>
-	<input type="text" class="login"><br>
+	<input type="text" name="uname" class="login" ><br>
 	<label>Password</label><br>
-	<input type="password" class="login"><br>
+	<input type="password" name="pass" class="login"><br>
 	<input type="submit" class="button" value="Login">
 	</form>
 	</div>
